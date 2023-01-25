@@ -183,7 +183,7 @@
         <th>Humidity</th>
         <th>Description</th>
       </tr>
-      <tr>
+      <tr id="day1">
         <td>${d1}</td>
         <td><img src="../js/src/icons/${data.list[0].weather[0].icon}.png" alt="icon" width="50" height="50"></td>
         <td>${data.list[0].main.temp_max}</td>
@@ -192,7 +192,7 @@
         <td>${data.list[0].main.humidity}%</td>
         <td>${data.list[0].weather[0].description}</td>
       </tr>
-      <tr>
+      <tr id="day2">
         <td>${d2}</td>
         <td><img src="../js/src/icons/${data.list[8].weather[0].icon}.png" alt="icon" width="50" height="50"></td>
         <td>${data.list[8].main.temp_max}</td>
@@ -201,7 +201,7 @@
         <td>${data.list[8].main.humidity}%</td>
         <td>${data.list[8].weather[0].description}</td>
       </tr>
-      <tr>
+      <tr id="day3">
         <td>${d3}</td>
         <td><img src="../js/src/icons/${data.list[16].weather[0].icon}.png" alt="icon" width="50" height="50"></td>
         <td>${data.list[16].main.temp_max}</td>
@@ -210,7 +210,7 @@
         <td>${data.list[16].main.humidity}%</td>
         <td>${data.list[16].weather[0].description}</td>
       </tr>
-      <tr>
+      <tr id="day4">
         <td>${d4}</td>
         <td><img src="../js/src/icons/${data.list[24].weather[0].icon}.png" alt="icon" width="50" height="50"></td>
         <td>${data.list[24].main.temp_max}</td>
@@ -219,7 +219,7 @@
         <td>${data.list[24].main.humidity}%</td>
         <td>${data.list[24].weather[0].description}</td>
       </tr>
-      <tr>
+      <tr id="day5">
         <td>${d5}</td>
         <td><img src="../js/src/icons/${data.list[32].weather[0].icon}.png" alt="icon" width="50" height="50"></td>
         <td>${data.list[32].main.temp_max}</td>
@@ -230,14 +230,79 @@
       </tr>
     </table>
 </div>
-    <div class="card-body forecast">
-     <p>Gear suggestion</p>
+    <div class="card-body forecast" id="tips" style="width:500px;">
+    <p>Staying hydrated is equally important in all weather conditions, but often forgotten in cooler temps!</p>
     </div>
   </div>
                     `)
               .setMaxWidth("none")
       marker.setPopup(wCard)
               .togglePopup();
+
+
+
+
+      let tip = "Staying hydrated is equally important in all weather conditions, but often forgotten in cooler temps!";
+      function outdoorTip () {
+        console.log(icon);
+        if (icon === "01d" || icon === "01n") {
+          tip = "Clear skies mean a stronger uv rays, don't forget sunscreen, hats, glasses, and other forms of skin protection!";
+        }
+        else if (icon === "02d" || icon === "02n" || icon === "03d" || icon === "03n" || icon === "04d" || icon === "04n") {
+          tip = "It is still possible to get sunburned when it's overcast. Don't forget skin protection!";
+        }
+        else if (icon === "09d" || icon === "09n" || icon === "10d" || icon === "10n" || icon === "11d" || icon === "11n") {
+          tip = "Rain gear recommended! Waterproof footwear is a must that most people don't consider. Umbrellas or hydrophobic clothing are always a good idea in the rain. Staying dry is essential to a good day outdoors in the rain. Visibility is often reduced, so keep that in mind.";
+        }
+      else if (icon === "13d" || icon === "13n") {
+          tip = "Snow gear, including inner wicking material layers as well as outer waterproof layers. Good boots and wool socks are important to staying dry and warm when outdoors in the snow. Hand warmers and snacks are also quick tips for enjoying a day outside in the cold.";
+        }
+        else if (icon === "50d" || icon === "50n") {
+          tip = "Visibility is very low. Be aware of surroundings at all times and protect your body from flying particles. If a tornado or squall consider staying  indoors.";
+        }
+
+
+
+
+      }
+
+      let icon = "";
+      $('#day1').hover(
+              function() {
+                icon = data.list[0].weather[0].icon;
+                outdoorTip();
+                $('#tips').html(tip);
+              }
+      );
+      $('#day2').hover(
+              function() {
+                icon = data.list[8].weather[0].icon;
+                outdoorTip();
+                console.log(tip)
+                $('#tips').html(tip);
+              }
+      );
+      $('#day3').hover(
+              function() {
+                icon = data.list[16].weather[0].icon;
+                outdoorTip();
+                $('#tips').html(tip);
+              }
+      );
+      $('#day4').hover(
+              function() {
+                icon = data.list[24].weather[0].icon;
+                outdoorTip();
+                $('#tips').html(tip);
+              }
+      );
+      $('#day5').hover(
+              function() {
+                icon = data.list[32].weather[0].icon;
+                outdoorTip();
+                $('#tips').html(tip);
+              }
+      );
 
       console.log('The entire response:', data);
     });
