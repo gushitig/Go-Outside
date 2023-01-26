@@ -240,30 +240,24 @@
               .togglePopup();
 
 
-
-
       let tip = "Staying hydrated is equally important in all weather conditions, but often forgotten in cooler temps!";
       function outdoorTip () {
         console.log(icon);
         if (icon === "01d" || icon === "01n") {
-          tip = "Clear skies mean a stronger uv rays, don't forget sunscreen, hats, glasses, and other forms of skin protection!";
+          tip = "Clear skies mean stronger uv rays, don't forget sunscreen, hats, glasses, and other forms of skin protection. Hydration is always important, but when the suns out electrolytes are always a good idea.";
         }
         else if (icon === "02d" || icon === "02n" || icon === "03d" || icon === "03n" || icon === "04d" || icon === "04n") {
-          tip = "It is still possible to get sunburned when it's overcast. Don't forget skin protection!";
+          tip = "It is still possible to get sunburned when it's overcast; don't forget skin protection.";
         }
         else if (icon === "09d" || icon === "09n" || icon === "10d" || icon === "10n" || icon === "11d" || icon === "11n") {
-          tip = "Rain gear recommended! Waterproof footwear is a must that most people don't consider. Umbrellas or hydrophobic clothing are always a good idea in the rain. Staying dry is essential to a good day outdoors in the rain. Visibility is often reduced, so keep that in mind.";
+          tip = "Rain gear recommended. Waterproof footwear is a must that most people don't consider. Umbrellas or hydrophobic clothing are always a good idea in the rain. Staying dry is essential to a good day outdoors in the rain. Visibility is often reduced, so keep that in mind.";
         }
       else if (icon === "13d" || icon === "13n") {
           tip = "Snow gear, including inner wicking material layers as well as outer waterproof layers. Good boots and wool socks are important to staying dry and warm when outdoors in the snow. Hand warmers and snacks are also quick tips for enjoying a day outside in the cold.";
         }
         else if (icon === "50d" || icon === "50n") {
-          tip = "Visibility is very low. Be aware of surroundings at all times and protect your body from flying particles. If a tornado or squall consider staying  indoors.";
+          tip = "Visibility is very low. Be aware of surroundings at all times and protect your body from flying particles. If a tornado or squall consider staying indoors.";
         }
-
-
-
-
       }
 
       let icon = "";
